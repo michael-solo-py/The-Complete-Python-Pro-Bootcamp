@@ -7,7 +7,7 @@ import time
 
 DOWNLOAD_SPEED = 50
 UPLOAD_SPEED = 28
-EMAIL = 'you@gmail.com'
+EMAIL = 'youemail@gmail.com'
 PASSWORD = 'youpassword'
 
 
