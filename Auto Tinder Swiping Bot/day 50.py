@@ -7,8 +7,8 @@ from selenium.webdriver.common.keys import Keys
 import undetected_chromedriver as uc
 import time
 
-EMAIL = 'wefw34243@gmail.com'
-PASS = 'ebkvcrclbvszcokt'
+EMAIL = 'jasdfasdf@gmail.com'
+PASS = 'JA090(&*5oie'
 
 chrome_options = uc.ChromeOptions()
 
