@@ -5,8 +5,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 import time
 
-DOWNLOAD_SPEED = 50
-UPLOAD_SPEED = 28
+DOWNLOAD_SPEED = 100
+UPLOAD_SPEED = 40
 EMAIL = 'youemail@gmail.com'
 PASSWORD = 'youpassword'
 
