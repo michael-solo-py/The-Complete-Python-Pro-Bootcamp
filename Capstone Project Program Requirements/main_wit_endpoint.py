@@ -35,37 +35,33 @@ def get_address():
 
 
 # ------------------------------ FILL FORM ------------------------------------------
-driver = webdriver.Chrome()
-driver.get(url_google_form)
-driver.maximize_window()
-
-
 def fill_inputs(address, price, link):
-    address_property = driver.find_element(By.XPATH,
-                                           '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/div[1]/input')
-    price_property = driver.find_element(By.XPATH,
-                                         '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/input')
-    link_property = driver.find_element(By.XPATH,
-                                        '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[1]/div/div[1]/input')
-    send_button = driver.find_element(By.CSS_SELECTOR,
-                                      '#mG61Hd > div.RH5hzf.RLS9Fe > div > div.ThHDze > div.DE3NNc.CekdCb > div.lRwqcd > div')
+    driver = webdriver.Chrome()
+
     for a in range(len(address)):
-        address_property.clear()
+        driver.get(url_google_form)
+
+        time.sleep(3)
+
+        address_property = driver.find_element(By.XPATH,
+                                               '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/div[1]/input')
         address_property.send_keys(address[a])
 
+        price_property = driver.find_element(By.XPATH,
+                                             '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/input')
         price_property.clear()
         price_property.send_keys(price[a])
 
+        link_property = driver.find_element(By.XPATH,
+                                            '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[1]/div/div[1]/input')
         link_property.clear()
         link_property.send_keys(link[a])
 
+        send_button = driver.find_element(By.CSS_SELECTOR,
+                                          '#mG61Hd > div.RH5hzf.RLS9Fe > div > div.ThHDze > div.DE3NNc.CekdCb > div.lRwqcd > div')
         send_button.click()
-
-        driver.get(url_google_form)
-        time.sleep(3)
 
 
 fill_inputs(get_address(), get_price(), get_href())
 
-time.sleep(10)
-driver.quit()
+
