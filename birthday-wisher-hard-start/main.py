@@ -18,8 +18,8 @@ PASSWOR = ""
 #     today = (now.month, now.day)
 #
 #     if today == bd:
-#         template = random.randint(1, 3)
-#         with open(f"letter_templates/letter_{template}.txt", 'r') as f:
+#         templates = random.randint(1, 3)
+#         with open(f"letter_templates/letter_{templates}.txt", 'r') as f:
 #             letter = f.readlines()
 #
 #         for i in letter:
