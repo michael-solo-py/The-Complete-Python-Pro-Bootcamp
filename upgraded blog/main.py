@@ -1,9 +1,12 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 import requests
+import smtplib
 
 response = requests.get("https://api.npoint.io/c790b4d5cab58020d391").json()
 
 app = Flask(__name__)
+
+client_message = {}
 
 
 @app.route('/')
@@ -16,9 +19,44 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/contact')
+@app.route('/contact', methods=["POST", "GET"])
 def contact():
-    return render_template('contact.html')
+    if request.method == "POST":
+        name = request.form['name']
+        email = request.form['email']
+        phone_num = request.form['phone']
+        message = request.form['message']
+        print(name)
+        print(email)
+        print(phone_num)
+        print(message)
+        client_message["name"] = name
+        client_message["email"] = email
+        client_message["phone"] = phone_num
+        client_message["message"] = message
+        # return redirect(url_for('receive_data'))
+        # req = request.form
+        # print(req)
+        send_email()  # or i can implement like this:
+        """
+        send_email(name, email, phone_num, message)
+        """
+
+        return render_template('contact.html', ms_sending=True)
+    return render_template('contact.html', ms_sending=False)
+
+
+def send_email():  # send_email(name, email, phone_num, message)
+    with smtplib.SMTP("smtp.gmail.com") as connection:
+        # message_to_send = f"Subject:Contact mail\n\nName: {name}\nEmail: {email}\nPhone: {phone}\nMessage:{message}"
+        connection.starttls()
+        connection.login(user="@gmail.com", password='')
+        connection.sendmail(from_addr="@gmail.com", to_addrs="@gmail.com",
+                            msg=f"""Subject: Contact mail
+                            {client_message['name']}
+                            {client_message['message']}
+                            {client_message['email']}
+                            {client_message['phone']}""")
 
 
 @app.route('/post/<int:id>')
