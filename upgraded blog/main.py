@@ -11,7 +11,7 @@ client_message = {}
 
 @app.route('/')
 def get_all_posts():
-    return render_template('index.html', post=response)
+    return render_template('add_user.html', post=response)
 
 
 @app.route('/about')

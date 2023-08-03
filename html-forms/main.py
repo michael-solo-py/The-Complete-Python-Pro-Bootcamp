@@ -15,7 +15,7 @@ def index():
         return redirect(url_for('loging'))
         # return redirect(request.url)
     else:
-        return render_template("index.html")
+        return render_template("add_user.html")
 
 
 @app.route('/loging')

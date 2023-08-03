@@ -1,0 +1,24 @@
+{% extends "./base.html" %}
+
+{% block title %}Add User{% endblock %}
+
+{% block content %}
+
+<h1>Product List</h1>
+<ul>
+    {% for comment in comments %}
+        <li>{{ comment.username }} - {{ comment.user_email }} - {{ comment.comment }} - {{ comment.date_posted }}</li>
+    {% endfor %}
+</ul>
+
+<form method="POST" action="/">
+    <label for="username">User Name:</label>
+    <input type="text" id="username" name="username" required><br>
+    <label for="email">email:</label>
+    <input type="email" id="email" name="email" required><br>
+    <label for="comment">comment:</label>
+    <input type="text" id="comment" name="comment" required><br>
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

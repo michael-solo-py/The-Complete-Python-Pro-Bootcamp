@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def get_all_posts():
-    return render_template("index.html", all_posts=posts)
+    return render_template("add_user.html", all_posts=posts)
 
 
 @app.route("/about")

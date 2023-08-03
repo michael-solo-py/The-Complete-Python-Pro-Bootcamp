@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Notes</title>
+</head>
+<body>
+<form action="/" method="post">
+    <input type="text" name="name" placeholder="Name"><br>
+    <textarea id="myTextarea" name="note" rows="4" cols="50" placeholder="My note"></textarea><br>
+    <input type="Submit" value="Save">
+</form>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Note</th>
+        <th>Date</th>
+    </tr>
+    {% for row in rows: %}
+    <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
