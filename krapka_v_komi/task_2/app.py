@@ -13,10 +13,10 @@ migrate = Migrate(app, db)
 
 class Comments(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(100))
-    user_email = db.Column(db.String(100))
-    comment = db.Column(db.String(1000))
-    date_posted = db.Column(db.Date)
+    username = db.Column(db.String(100), nullable=False)
+    user_email = db.Column(db.String(100), nullable=False)
+    comment = db.Column(db.Text, nullable=False)
+    date_posted = db.Column(db.DateTime, default=datetime.utcnow)
 
 
 @app.route('/', methods=['POST', 'GET'])
@@ -26,9 +26,8 @@ def index():
             username = request.form['username']
             email = request.form['email']
             comment = request.form['comment']
-            date_posted = datetime.now()
 
-            new_comment = Comments(username=username, user_email=email, comment=comment, date_posted=date_posted)
+            new_comment = Comments(username=username, user_email=email, comment=comment)
             db.session.add(new_comment)
             db.session.commit()
 
