@@ -26,10 +26,9 @@ def upgrade():
     sa.Column('comment', sa.String(length=1000), nullable=False),
     sa.Column('date_posted', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('password'),
-    sa.UniqueConstraint('user_email'),
-    sa.UniqueConstraint('username')
     )
+    op.drop_constraint('unique_username', 'user_comments', type_='unique')
+    op.alter_column('user_comments', 'username', nullable=True)
     # ### end Alembic commands ###
 
 

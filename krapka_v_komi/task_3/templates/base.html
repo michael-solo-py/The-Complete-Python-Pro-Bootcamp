@@ -6,10 +6,10 @@
 <body>
 <ul>
     {% for user in users %}
-        <li>{{ user.username }} - {{ user.user_email }} - {{ user.comment }}</li>
+        <li>{{ user.username }} - {{ user.user_email }} - {{ user.comment }} - {{ user.date_posted }}</li>
     {% endfor %}
 </ul>
-
+    <a>There are {{ count_comments }}</a><br>
     <footer>
         <p>© 2023. My website</p>
     </footer>

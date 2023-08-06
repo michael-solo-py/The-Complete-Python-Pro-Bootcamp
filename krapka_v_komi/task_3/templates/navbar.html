@@ -8,11 +8,19 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08"
             aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="container">
+        <form action="/" method="POST">
+            <input type="search" id='search_email' name='search_email'
+               class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
 
     <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
         <ul class="navbar-nav">
@@ -29,7 +37,7 @@
                 <a class="nav-link" href="{{ url_for('delete') }}">Delete</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{{ url_for('update') }}">Update Username</a>
+                <a class="nav-link" href="{{ url_for('update') }}">Update</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="{{ url_for('last_five') }}">Last 5 comments</a>

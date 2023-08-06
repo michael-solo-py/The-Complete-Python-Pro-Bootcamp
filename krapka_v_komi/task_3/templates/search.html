@@ -1,0 +1,5 @@
+{% include 'navbar.html' %}
+
+{% for comment in  search_comment %}
+    <a>{{ comment.user_email }} ----- {{ comment.comment }}</a>
+{% endfor %}

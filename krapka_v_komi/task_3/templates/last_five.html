@@ -6,6 +6,8 @@
 </head>
 <body>
     {% include 'navbar.html' %}
-
+    {% for one in last_5 %}
+        <li>{{ one.username }} - {{ one.user_email }} - {{ one.comment }}</li>
+    {% endfor %}
 </body>
 </html>
