@@ -1,5 +1,7 @@
 {% include 'navbar.html' %}
 
 {% for comment in  search_comment %}
-    <a>{{ comment.user_email }} ----- {{ comment.comment }}</a>
+    <a>{{ comment.user_email }} ----- {{ comment.comment }}</a><br>
 {% endfor %}
+
+<br><a>{{ get_username.username }} leaved {{ count }}</a>

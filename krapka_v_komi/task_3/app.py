@@ -85,7 +85,6 @@ def add_comment():
         username = request.form['username']
         user_email = request.form['email']
 
-        # Fetch the user from the database
         user = UserComments.query.filter_by(username=username, user_email=user_email).first()
         if len(user.comment) > 1:
             new_comment = UserComments(username=username, password=user.password, user_email=user_email,
@@ -106,8 +105,9 @@ def search():
         input_email = request.form['search_email']
         search_comment = UserComments.query.filter(or_(UserComments.user_email.like(f'%{input_email}%'),
                                                        UserComments.comment.like(f'%{input_email}%'))).all()
-        print(search_comment)
-        return render_template('search.html', search_comment=search_comment)
+        count = UserComments.query.filter_by(user_email=input_email).count()
+        get_username = UserComments.query.filter_by(user_email=input_email).first()
+        return render_template('search.html', search_comment=search_comment, count=count, get_username=get_username)
 
 
 if __name__ == "__main__":
